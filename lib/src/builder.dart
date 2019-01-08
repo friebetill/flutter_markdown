@@ -312,7 +312,11 @@ class MarkdownBuilder implements md.NodeVisitor {
   void _addBlockChild(Widget child) {
     final _BlockElement parent = _blocks.last;
     if (parent.children.isNotEmpty)
-      parent.children.add(new SizedBox(height: styleSheet.blockSpacing));
+      if (parent.tag == "ul" || parent.tag == "ol") {
+        parent.children.add(new SizedBox(height: styleSheet.listSpacing));
+      } else {
+        parent.children.add(new SizedBox(height: styleSheet.blockSpacing));
+      }
     parent.children.add(child);
     parent.nextListIndex += 1;
   }

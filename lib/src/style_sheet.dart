@@ -10,7 +10,6 @@ class MarkdownStyleSheet {
   MarkdownStyleSheet({
     this.a,
     this.p,
-    this.li,
     this.code,
     this.h1,
     this.h2,
@@ -24,6 +23,7 @@ class MarkdownStyleSheet {
     this.img,
     this.blockSpacing,
     this.listIndent,
+    this.listSpacing,
     this.blockquotePadding,
     this.blockquoteDecoration,
     this.codeblockPadding,
@@ -32,7 +32,7 @@ class MarkdownStyleSheet {
   }) : _styles = <String, TextStyle>{
     'a': a,
     'p': p,
-    'li': li,
+    'li': p,
     'code': code,
     'pre': p,
     'h1': h1,
@@ -53,7 +53,6 @@ class MarkdownStyleSheet {
     return new MarkdownStyleSheet(
       a: const TextStyle(color: Colors.blue),
       p: theme.textTheme.body1,
-      li: theme.textTheme.body1,
       code: new TextStyle(
         color: Colors.grey.shade700,
         fontFamily: "monospace",
@@ -71,6 +70,7 @@ class MarkdownStyleSheet {
       img: theme.textTheme.body1,
       blockSpacing: 8.0,
       listIndent: 32.0,
+      listSpacing: 8.0,
       blockquotePadding: 8.0,
       blockquoteDecoration: new BoxDecoration(
         color: Colors.blue.shade100,
@@ -97,7 +97,6 @@ class MarkdownStyleSheet {
     return new MarkdownStyleSheet(
       a: const TextStyle(color: Colors.blue),
       p: theme.textTheme.body1,
-      li: theme.textTheme.body1,
       code: new TextStyle(
         color: Colors.grey.shade700,
         fontFamily: "monospace",
@@ -115,6 +114,7 @@ class MarkdownStyleSheet {
       img: theme.textTheme.body1,
       blockSpacing: 8.0,
       listIndent: 32.0,
+      listSpacing: 8.0,
       blockquotePadding: 8.0,
       blockquoteDecoration: new BoxDecoration(
         color: Colors.blue.shade100,
@@ -138,7 +138,6 @@ class MarkdownStyleSheet {
   MarkdownStyleSheet copyWith({
     TextStyle a,
     TextStyle p,
-    TextStyle li,
     TextStyle code,
     TextStyle h1,
     TextStyle h2,
@@ -152,6 +151,7 @@ class MarkdownStyleSheet {
     TextStyle img,
     double blockSpacing,
     double listIndent,
+    double listSpacing,
     double blockquotePadding,
     Decoration blockquoteDecoration,
     double codeblockPadding,
@@ -161,7 +161,6 @@ class MarkdownStyleSheet {
     return new MarkdownStyleSheet(
       a: a ?? this.a,
       p: p ?? this.p,
-      li: li ?? this.li,
       code: code ?? this.code,
       h1: h1 ?? this.h1,
       h2: h2 ?? this.h2,
@@ -175,6 +174,7 @@ class MarkdownStyleSheet {
       img: img ?? this.img,
       blockSpacing: blockSpacing ?? this.blockSpacing,
       listIndent: listIndent ?? this.listIndent,
+      listSpacing: listSpacing ?? this.listSpacing,
       blockquotePadding: blockquotePadding ?? this.blockquotePadding,
       blockquoteDecoration: blockquoteDecoration ?? this.blockquoteDecoration,
       codeblockPadding: codeblockPadding ?? this.codeblockPadding,
@@ -188,9 +188,6 @@ class MarkdownStyleSheet {
 
   /// The [TextStyle] to use for `p` elements.
   final TextStyle p;
-
-  /// The [TextStyle] to use for `li` elements.
-  final TextStyle li;
 
   /// The [TextStyle] to use for `code` elements.
   final TextStyle code;
@@ -231,6 +228,9 @@ class MarkdownStyleSheet {
   /// The amount of horizontal space to indent list items.
   final double listIndent;
 
+  /// The amount of vertical space to use between list items.
+  final double listSpacing;
+
   /// The padding to use for `blockquote` elements.
   final double blockquotePadding;
 
@@ -259,7 +259,6 @@ class MarkdownStyleSheet {
     final MarkdownStyleSheet typedOther = other;
     return typedOther.a == a
         && typedOther.p == p
-        && typedOther.li == li
         && typedOther.code == code
         && typedOther.h1 == h1
         && typedOther.h2 == h2
@@ -273,6 +272,7 @@ class MarkdownStyleSheet {
         && typedOther.img == img
         && typedOther.blockSpacing == blockSpacing
         && typedOther.listIndent == listIndent
+        && typedOther.listSpacing == listSpacing
         && typedOther.blockquotePadding == blockquotePadding
         && typedOther.blockquoteDecoration == blockquoteDecoration
         && typedOther.codeblockPadding == codeblockPadding
